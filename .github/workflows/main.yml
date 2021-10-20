@@ -134,9 +134,8 @@ jobs:
           echo "service=$CHANGED_SERVICES" >> $GITHUB_ENV
           projectname=`git show --format="" --name-only | xargs dirname | sort | uniq`
           echo "folder_name=$projectname" >> $GITHUB_ENV
-          watch_files=${1}
-          for i in `cat $watch_files`;do
-              foldername=`echo $i | cut -d '/' -f 1`
+          for file in $(find . -type f -name "*.watch");do
+              foldername=`echo $file | cut -d '/' -f 1`
               echo "foldername=$foldername" >>$GITHUB_ENV
           done
         id: changed_services_info
@@ -163,7 +162,7 @@ jobs:
           projectBaseDir: ${{ env.folder_name }}/
           args: >
             -Dsonar.organization=harishsingh2707            
-            -Dsonar.projectKey=Harishsingh2707.service.${{ env.service }}
+            -Dsonar.projectKey=Harishsingh2707.${{ env.foldername }}.${{ env.service }}
 
            #-Dsonar.branch.name="main"
            #-Dsonar.branch.target="main"
