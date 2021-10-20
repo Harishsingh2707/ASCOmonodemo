@@ -158,7 +158,10 @@ jobs:
           projectBaseDir: ${{ env.folder_name }}/
           args: >
             -Dsonar.organization=harishsingh2707
-            -Dsonar.projectKey=Harishsingh2707.function.${{ env.service }}
+            for i in `cat $watch_files`;do
+              foldername=`echo $i | cut -d '/' -f 1`
+              -Dsonar.projectKey=Harishsingh2707.function.${{ env.service }}
+            done
            #-Dsonar.branch.name="main"
            #-Dsonar.branch.target="main"
            #-Dsonar.projectVersion=${{ steps.git_info.outputs.project_version }}
