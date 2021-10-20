@@ -16,7 +16,7 @@ detect_changed_folders() {
   # echo $GIT_COMMIT
   # echo $GIT_PREVIOUS_COMMIT
   folders=$(git diff --name-only ${GIT_COMMIT} ${GIT_PREVIOUS_COMMIT} | sort -u | cut -d '/' -f 1,2 | uniq)
-  # echo "${folders}"
+  echo "${folders}"
   export changed_components=${folders}
   # echo "${changed_components}"
 }
