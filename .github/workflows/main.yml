@@ -134,6 +134,7 @@ jobs:
           echo "service=$CHANGED_SERVICES" >> $GITHUB_ENV
           projectname=`git show --format="" --name-only | xargs dirname | sort | uniq`
           echo "folder_name=$projectname" >> $GITHUB_ENV
+          watch_files=${1}
           for i in `cat $watch_files`;do
               foldername=`echo $i | cut -d '/' -f 1`
               echo "foldername=$foldername" >>$GITHUB_ENV
