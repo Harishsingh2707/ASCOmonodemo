@@ -133,7 +133,7 @@ jobs:
           echo "::set-output name=changed_tests::${CHANGED_SERVICES}"
           echo "service=$CHANGED_SERVICES" >> $GITHUB_ENV
           projectname=`git show --format="" --name-only | xargs dirname | sort | uniq`
-          echo $projectname
+          echo "folder_name=$projectname" >> $GITHUB_ENV
         id: changed_services_info
       - uses: actions/download-artifact@v2
         if: ${{ needs.DevOpsUnitTestsPR.outputs.codecoverage == 'yes' }}
@@ -155,7 +155,7 @@ jobs:
         if: ${{ needs.unitTestsMain.outputs.runservicescan == 'yes' }}
         uses: SonarSource/sonarcloud-github-action@master
         with:
-          projectBaseDir: service/${{ env.service }}/
+          projectBaseDir: ${{ env.folder_name }}/
           args: >
             -Dsonar.organization=harishsingh2707
             -Dsonar.projectKey=Harishsingh2707.function.${{ env.service }}
