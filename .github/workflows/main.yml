@@ -134,6 +134,10 @@ jobs:
           echo "service=$CHANGED_SERVICES" >> $GITHUB_ENV
           projectname=`git show --format="" --name-only | xargs dirname | sort | uniq`
           echo "folder_name=$projectname" >> $GITHUB_ENV
+          for i in `cat $watch_files`;do
+              foldername=`echo $i | cut -d '/' -f 1`
+              echo "foldername=$foldername" >>$GITHUB_ENV
+          done
         id: changed_services_info
       - uses: actions/download-artifact@v2
         if: ${{ needs.DevOpsUnitTestsPR.outputs.codecoverage == 'yes' }}
@@ -157,12 +161,9 @@ jobs:
         with:
           projectBaseDir: ${{ env.folder_name }}/
           args: >
-            -Dsonar.organization=harishsingh2707
-            for i in `cat $watch_files`;do
-              foldername=`echo $i | cut -d '/' -f 1`
-              echo $foldername
-              -Dsonar.projectKey=Harishsingh2707.$foldername.${{ env.service }}
-            done
+            -Dsonar.organization=harishsingh2707            
+            -Dsonar.projectKey=Harishsingh2707.${{ env.foldername }}.${{ env.service }}
+
            #-Dsonar.branch.name="main"
            #-Dsonar.branch.target="main"
            #-Dsonar.projectVersion=${{ steps.git_info.outputs.project_version }}
