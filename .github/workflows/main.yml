@@ -132,6 +132,8 @@ jobs:
           echo $CHANGED_SERVICES
           echo "::set-output name=changed_tests::${CHANGED_SERVICES}"
           echo "service=$CHANGED_SERVICES" >> $GITHUB_ENV
+          projectname=`git show --format="" --name-only | xargs dirname | sort | uniq`
+          echo $projectname
         id: changed_services_info
       - uses: actions/download-artifact@v2
         if: ${{ needs.DevOpsUnitTestsPR.outputs.codecoverage == 'yes' }}
