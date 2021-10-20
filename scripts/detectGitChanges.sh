@@ -3,10 +3,10 @@ watch_files=${1}
 service=$(echo ${watch_files} | cut -d '.' -f 2 | cut -d '/' -f 3)
 echo "service=$service" >> $GITHUB_ENV
 echo $service
-for i in `cat $watch_files`;do
-  foldername=`echo $i | cut -d '/' -f 1`
-  curl -v -X POST https://3e59557e76bb1e832212a641cb88b09db5f69413@sonarcloud.io/api/projects/create -d "name="Harishsingh2707.$foldername."$service&project="Harishsingh2707.$foldername."$service&organization=harishsingh2707"
-done
+#for i in `cat $watch_files`;do
+  #foldername=`echo $i | cut -d '/' -f 1`
+curl -v -X POST https://3e59557e76bb1e832212a641cb88b09db5f69413@sonarcloud.io/api/projects/create -d "name="ASCOmonodemo."$service&project="ASCOmonodemo."$service&organization=harishsingh2707"
+#done
 oldIFS=${IFS}
 IFS=$'\r\n' GLOBIGNORE='*' command eval 'IGNORE_FILES=($(cat $watch_files))'
 IFS=${oldIFS}
