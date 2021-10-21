@@ -37,7 +37,7 @@ jobs:
           git add project9.watch
           git commit -m "newfile"
           git push -f
-          echo "projectname=$projectname" >> project9.watch
+          echo $projectname >> project9.watch
           
       - name: Run Unit Tests
         run: |
