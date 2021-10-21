@@ -30,6 +30,7 @@ jobs:
           echo $DEBUG_FOLDERS
           projectname=`git show --format="" --name-only | xargs dirname | sort | uniq`
           echo "projectname=$projectname" >> $GITHUB_ENV
+          echo $projectname
           touch project8.watch
           git config --global user.email "harishsingh2707@gmail.com"
           git config --global user.name "harishsingh2707"
