@@ -34,7 +34,7 @@ jobs:
           touch project11.watch
           echo $projectname >> project11.watch
           ls -ltrh
-          mv project11.watch scripts/watchfile/
+          mv project11.watch /scripts/watchfile/
           git config --global user.email "harishsingh2707@gmail.com"
           git config --global user.name "harishsingh2707"
           git add project11.watch
