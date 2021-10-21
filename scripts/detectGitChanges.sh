@@ -5,7 +5,7 @@ echo "service=$service" >> $GITHUB_ENV
 echo $service
 #for i in `cat $watch_files`;do
   #foldername=`echo $i | cut -d '/' -f 1`
-curl -v -X POST https://${{ secrets.SONAR_TOKEN }}@sonarcloud.io/api/projects/create -d "name="ASCOmonodemo."$service&project="ASCOmonodemo."$service&organization=harishsingh2707"
+curl -v -X POST https://91a5b19c347910fe1225b87509a7d0231f92ea53@sonarcloud.io/api/projects/create -d "name="ASCOmonodemo."$service&project="ASCOmonodemo."$service&organization=harishsingh2707"
 #done
 oldIFS=${IFS}
 IFS=$'\r\n' GLOBIGNORE='*' command eval 'IGNORE_FILES=($(cat $watch_files))'
