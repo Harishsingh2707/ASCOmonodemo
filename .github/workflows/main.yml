@@ -98,7 +98,7 @@ jobs:
                 echo "No functions for $service"
               fi
             done
-          echo $CHANGED_SERVICES
+          
           echo "Remove appsyncapi and cloudformation from CHANGED_SERVICES"
           CHANGED_SERVICES=$(echo $CHANGED_SERVICES | sed 's/appsyncapi//g' | sed 's/cloudformation//g')
           if [ -z "${CHANGED_SERVICES}" ];then
@@ -113,6 +113,7 @@ jobs:
             echo "::set-output name=service_tests::${SERVICE}"
             echo "::set-output name=run_service_scan::yes"
           fi
+          echo $CHANGED_SERVICES      
         id: services_info
       - run: echo "$code_coverage"
       - uses: actions/upload-artifact@v2
