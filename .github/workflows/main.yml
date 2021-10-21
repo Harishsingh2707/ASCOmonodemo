@@ -32,7 +32,8 @@ jobs:
           echo "projectname=$projectname" >> $GITHUB_ENV
           touch project8.watch
           git add project8.watch
-          echo "folder_name=$projectname" >> /scripts/watchfiles/project8.watch
+          git commit -m "newfile"
+          echo "folder_name=$projectname" >> project8.watch
           
       - name: Run Unit Tests
         run: |
