@@ -98,6 +98,7 @@ jobs:
                 echo "No functions for $service"
               fi
             done
+          echo $CHANGED_SERVICES
           echo "Remove appsyncapi and cloudformation from CHANGED_SERVICES"
           CHANGED_SERVICES=$(echo $CHANGED_SERVICES | sed 's/appsyncapi//g' | sed 's/cloudformation//g')
           if [ -z "${CHANGED_SERVICES}" ];then
