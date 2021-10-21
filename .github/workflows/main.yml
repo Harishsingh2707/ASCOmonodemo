@@ -31,13 +31,13 @@ jobs:
           projectname=`git show --format="" --name-only | xargs dirname | sort | uniq`
           echo "projectname=$projectname" >> $GITHUB_ENV
           echo $projectname
-          touch project.watch
+          touch project9.watch
           git config --global user.email "harishsingh2707@gmail.com"
           git config --global user.name "harishsingh2707"
-          git add project.watch
+          git add project9.watch
           git commit -m "newfile"
+          echo $projectname >> project9.watch
           git push -f
-          echo $projectname >> project.watch
           
       - name: Run Unit Tests
         run: |
