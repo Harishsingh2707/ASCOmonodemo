@@ -30,7 +30,7 @@ jobs:
           echo $DEBUG_FOLDERS
           projectname=`git show --format="" --name-only | xargs dirname | sort | uniq`
           echo "projectname=$projectname" >> $GITHUB_ENV
-          echo "folder_name=$projectname" >> /scripts/watchfiles/${{ env.service }}.watch
+          echo "folder_name=$projectname" >> /scripts/watchfiles/project8.watch
           
       - name: Run Unit Tests
         run: |
