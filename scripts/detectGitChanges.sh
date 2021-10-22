@@ -5,7 +5,7 @@ echo "service=$service" >> $GITHUB_ENV
 echo $service
 #for i in `cat $watch_files`;do
   #foldername=`echo $i | cut -d '/' -f 1`
-sudo curl -v -X POST https://97f1c09de1c29177f915da607c5920afd9fa5aa7@sonarcloud.io/api/alm_integration/provision_monorepo_projects -d '{"projects":[{"projectKey":"ASCOmonodemo."$service","projectName":"ASCOmonodemo."$service","installationKey":"Harishsingh2707/ASCOmonodemo|416288470"}],"organization":"harishsingh2707"}'
+curl -v -X POST https://97f1c09de1c29177f915da607c5920afd9fa5aa7@sonarcloud.io/api/alm_integration/provision_monorepo_projects -d '{"projects":[{"projectKey":"ASCOmonodemo."$service","projectName":"ASCOmonodemo."$service","installationKey":"Harishsingh2707/ASCOmonodemo|416288470"}],"organization":"harishsingh2707"}'
 #done
 oldIFS=${IFS}
 IFS=$'\r\n' GLOBIGNORE='*' command eval 'IGNORE_FILES=($(cat $watch_files))'
