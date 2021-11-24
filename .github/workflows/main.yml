@@ -177,7 +177,7 @@ jobs:
           projectBaseDir: ${{ env.folder_name }}/
           args: >
             -Dsonar.organization=harishsingh2707            
-            -Dsonar.projectKey=ASCOmonodemo.${{ env.service }}
+            -Dsonar.projectKey=Cloudtechner.${{ env.service }}
 
            #-Dsonar.branch.name="main"
            #-Dsonar.branch.target="main"
